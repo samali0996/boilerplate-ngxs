@@ -8,6 +8,8 @@ import {
   MOCK_EXPECTED_FEES_MAPPING,
   MOCK_FEE_ITEM_1,
   MOCK_FEE_ITEM_2,
+  MOCK_FEE_ITEM_4,
+  MOCK_FEE_STATE,
   MOCK_NEW_FEE_ITEM_1,
 } from '../models/fees.model.mock';
 
@@ -43,6 +45,72 @@ describe('Fees actions', () => {
     expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual({
       ...MOCK_EXPECTED_FEES_MAPPING,
       [MOCK_NEW_FEE_ITEM_1.id]: MOCK_NEW_FEE_ITEM_1,
+    });
+  });
+
+  it('should clear map', () => {
+    store.reset({
+      fees: {...MOCK_FEE_STATE},
+    });
+    store.dispatch(new Fees.Clear());
+    expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual(defaults.map);
+  });
+
+  it('deletes by Id', () => {
+    store.reset({
+      fees: {
+        map: {
+          ...MOCK_EXPECTED_FEES_MAPPING,
+          [MOCK_FEE_ITEM_4.id]: MOCK_FEE_ITEM_4,
+        },
+      },
+    });
+    store.dispatch(new Fees.RemoveByIds([MOCK_FEE_ITEM_4.id]));
+    expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual(
+      MOCK_EXPECTED_FEES_MAPPING
+    );
+  });
+  it('delete Id not found', () => {
+    store.reset({
+      fees: {
+        map: {
+          ...MOCK_EXPECTED_FEES_MAPPING,
+        },
+      },
+    });
+    store.dispatch(new Fees.RemoveByIds(['ddsaudn']));
+    expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual(
+      MOCK_EXPECTED_FEES_MAPPING
+    );
+  });
+  it('delete Ids some found', () => {
+    store.reset({
+      fees: {
+        map: {
+          ...MOCK_EXPECTED_FEES_MAPPING,
+          [MOCK_FEE_ITEM_4.id]: MOCK_FEE_ITEM_4,
+        },
+      },
+    });
+    store.dispatch(new Fees.RemoveByIds(['ddsaudn', MOCK_FEE_ITEM_4.id]));
+    expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual(
+      MOCK_EXPECTED_FEES_MAPPING
+    );
+  });
+  it('delete Ids some found', () => {
+    store.reset({
+      fees: {
+        map: {
+          ...MOCK_EXPECTED_FEES_MAPPING,
+          [MOCK_FEE_ITEM_4.id]: MOCK_FEE_ITEM_4,
+        },
+      },
+    });
+    store.dispatch(
+      new Fees.RemoveByIds(['ddsaudn', MOCK_FEE_ITEM_4.id, MOCK_FEE_ITEM_2.id])
+    );
+    expect(store.selectSnapshot(FeesSelector.getFeesMap)).toEqual({
+      [MOCK_FEE_ITEM_1.id]: MOCK_FEE_ITEM_1,
     });
   });
 });

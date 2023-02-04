@@ -5,4 +5,12 @@ export namespace Fees {
     static readonly type = '[Fees] AddOrUpdate';
     constructor(public payload: FeeModel) {}
   }
+  export class Clear {
+    static readonly type = '[Fees] Clear';
+  }
+
+  export class RemoveByIds {
+    static readonly type = '[Fees] RemoveById';
+    constructor(public payload: string[]) {}
+  }
 }

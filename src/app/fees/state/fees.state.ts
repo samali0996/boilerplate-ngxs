@@ -10,7 +10,7 @@ import {FeesStateModel, defaults} from '../models/fees.model';
 @Injectable({providedIn: 'root'})
 export class FeesState {
   @Action(Fees.AddOrUpdate)
-  addFeeAction(
+  add(
     {getState, patchState}: StateContext<FeesStateModel>,
     {payload}: Fees.AddOrUpdate
   ) {
@@ -18,5 +18,22 @@ export class FeesState {
     patchState({
       map: {...state.map, [payload.id]: payload},
     });
+  }
+
+  @Action(Fees.Clear)
+  clear({setState}: StateContext<FeesStateModel>) {
+    setState({...defaults});
+  }
+
+  @Action(Fees.RemoveByIds)
+  removeByIds(
+    {getState, setState}: StateContext<FeesStateModel>,
+    {payload}: Fees.RemoveByIds
+  ) {
+    const state = getState();
+    payload.forEach(id => {
+      delete state.map[id];
+    });
+    setState(state);
   }
 }
