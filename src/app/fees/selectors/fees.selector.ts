@@ -7,4 +7,11 @@ export class FeesSelector {
   static getFeesMap(state: FeesStateModel): Record<string, FeeModel> {
     return state.map;
   }
+
+  @Selector([FeesSelector.getFeesMap])
+  static getFeeById(
+    map: Record<string, FeeModel>
+  ): (id: string) => FeeModel | null {
+    return id => map[id] ?? null;
+  }
 }

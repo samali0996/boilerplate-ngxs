@@ -19,17 +19,4 @@ export class FeesState {
       map: {...state.map, [payload.id]: payload},
     });
   }
-
-  // this can be a facade thing
-  // @Action(Fees.MultiAdd)
-  // addFeesAction(
-  //   {dispatch}: StateContext<FeesStateModel>,
-  //   {payload}: Fees.MultiAdd
-  // ) {
-  //   const feeActions: Fees.AddOrUpdate[] = [];
-  //   payload.forEach(fee => {
-  //     feeActions.push(new Fees.AddOrUpdate(fee));
-  //   });
-  //   dispatch(feeActions);
-  // }
 }
