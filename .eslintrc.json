@@ -21,6 +21,9 @@
         "project": ["./tsconfig.json"]
       },
       "rules": {
+        "@typescript-eslint/unbound-method": "off",
+        "no-console": "warn",
+        "@typescript-eslint/no-namespace": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -47,7 +50,7 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {
-        
+       
       }
     }
   ]
