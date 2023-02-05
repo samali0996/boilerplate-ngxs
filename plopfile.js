@@ -1,12 +1,5 @@
 
 module.exports = function (plop) {
-  plop.setHelper('lowerCase', function(text) {
-    return text.toLowerCase();
-  });
-
-  plop.setHelper('capatalizeFirstLetter', function(text){
-    return text.charAt(0).toUpperCase()+text.slice(1)
-  })
 
   plop.setGenerator('ngxsMapStateModel', {
     description: 'NGXS Map State Model',
@@ -20,7 +13,7 @@ module.exports = function (plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/app/{{lowerCase name}}/models/{{lowerCase name}}.model.ts',
+        path: 'src/app/{{kebabCase name}}/models/{{kebabCase name}}.model.ts',
         templateFile: 'plop_templates/model.ts.hbs',
       },
     ],
@@ -37,7 +30,7 @@ module.exports = function (plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/app/{{lowerCase name}}/action/{{lowerCase name}}.action.ts',
+        path: 'src/app/{{ kebabCase name}}/action/{{ kebabCase name}}.action.ts',
         templateFile: 'plop_templates/action.ts.hbs',
       },
     ],

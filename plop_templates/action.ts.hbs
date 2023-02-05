@@ -1,16 +1,16 @@
-import { {{capatalizeFirstLetter name}}Model } from '../models/{{lowerCase name}}.model'
+import { {{pascalCase name}}Model } from '../models/{{kebabCase name}}.model'
 
-export namespace {{capatalizeFirstLetter name}} {
+export namespace {{pascalCase name}} {
     export class AddOrUpdate {
-        static readonly type = '[{{capatalizeFirstLetter name}}] AddOrUpdate';
-        constructor(public payload: {{capatalizeFirstLetter name}}Model) {}
+        static readonly type = '[{{pascalCase name}}] AddOrUpdate';
+        constructor(public payload: {{pascalCase name}}Model) {}
     }
     export class Clear {
-    static readonly type = '[{{capatalizeFirstLetter name}}] Clear';
+    static readonly type = '[{{pascalCase name}}] Clear';
   }
 
   export class RemoveByIds {
-    static readonly type = '[{{capatalizeFirstLetter name}}] RemoveById';
+    static readonly type = '[{{pascalCase name}}] RemoveById';
     constructor(public payload: string[]) {}
   }
 }
