@@ -6,13 +6,13 @@ import {environment} from '@env/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {RouterModule} from '@angular/router';
 import {NgxsModule} from '@ngxs/store';
-import {FeesState} from './fees/state/fees.state';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    NgxsModule.forRoot([FeesState]),
+    NgxsModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     NgxsLoggerPluginModule.forRoot({
@@ -21,6 +21,7 @@ import {FeesState} from './fees/state/fees.state';
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production,
     }),
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
