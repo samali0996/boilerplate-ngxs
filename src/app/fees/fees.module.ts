@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {FeesRoutingModule} from './fees-routing.module';
-import {FeesComponent} from './fees.component';
+import {FeesComponent} from './components/fees.component';
 import {NgxsModule} from '@ngxs/store';
 import {FeesState} from './state/fees.state';
 

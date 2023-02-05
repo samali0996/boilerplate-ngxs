@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {UrlFragments} from 'app/@shared/routing/url-fragments';
-import {FeesComponent} from './fees.component';
+import {FeesComponent} from './components/fees.component';
 
 const routes: Routes = [
   {
