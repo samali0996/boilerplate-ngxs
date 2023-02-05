@@ -1,9 +1,9 @@
-export type {{pascalCase name}}Model = {
+export type {{>modelName}} = {
     id: string
 }
 
-export type {{pascalCase name}}StateModel = {map: Record<string, {{pascalCase name}}Model>};
+export type {{>stateModelName}} = {map: Record<string, {{>modelName}}>};
 
-export const defaults: {{pascalCase name}}StateModel = {
+export const defaults: {{>stateModelName}} = {
     map: {},
 };

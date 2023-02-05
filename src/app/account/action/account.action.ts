@@ -10,7 +10,7 @@ export namespace Account {
   }
 
   export class RemoveByIds {
-    static readonly type = '[Account] RemoveById';
+    static readonly type = '[Account] RemoveByIds';
     constructor(public payload: string[]) {}
   }
 }

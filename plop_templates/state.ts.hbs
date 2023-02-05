@@ -1,0 +1,39 @@
+import {Injectable} from '@angular/core';
+import {State, Action, StateContext} from '@ngxs/store';
+import { {{> actionName }} } from '../action/{{>actionsFileName}}';
+import { {{>stateModelName}}, defaults} from '../models/{{>modelFileName}}';
+
+@State<{{>stateModelName}}>({
+  name: '{{kebabCase name}}',
+  defaults,
+})
+@Injectable({providedIn: 'root'})
+export class {{>stateName}} {
+  @Action({{>actionName}}.AddOrUpdate)
+  add(
+      {getState, patchState}: StateContext<{{>stateModelName}}>,
+      {payload}: {{>actionName}}.AddOrUpdate
+    ) {
+      const state = getState();
+      patchState({
+        map: {...state.map, [payload.id]: payload},
+      });
+    }
+
+  @Action({{>actionName}}.Clear)
+  clear({setState}: StateContext<{{>stateModelName}}>) {
+    setState({...defaults});
+  }
+
+ @Action({{>actionName}}.RemoveByIds)
+  removeByIds(
+    {getState, setState}: StateContext<{{>stateModelName}}>,
+    {payload}: {{>actionName}}.RemoveByIds
+  ) {
+    const state = getState();
+    payload.forEach(id => {
+      delete state.map[id];
+    });
+    setState(state);
+  }
+}

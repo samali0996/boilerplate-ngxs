@@ -1,16 +1,16 @@
-import { {{pascalCase name}}Model } from '../models/{{kebabCase name}}.model'
+import { {{>modelName}} } from '../models/{{>modelFileName}}'
 
-export namespace {{pascalCase name}} {
+export namespace {{>actionName}} {
     export class AddOrUpdate {
-        static readonly type = '[{{pascalCase name}}] AddOrUpdate';
-        constructor(public payload: {{pascalCase name}}Model) {}
+        static readonly type = '[{{>actionName}}] AddOrUpdate';
+        constructor(public payload: {{>modelName}}) {}
     }
     export class Clear {
-    static readonly type = '[{{pascalCase name}}] Clear';
+    static readonly type = '[{{>actionName}}] Clear';
   }
 
   export class RemoveByIds {
-    static readonly type = '[{{pascalCase name}}] RemoveById';
+    static readonly type = '[{{>actionName}}] RemoveByIds';
     constructor(public payload: string[]) {}
   }
 }
