@@ -13,4 +13,12 @@ export namespace Account {
     static readonly type = '[Account] RemoveByIds';
     constructor(public payload: string[]) {}
   }
+
+  /* PLOP APPEND MARKER. DO NOT DELETE! */
+  export class NewAction2 {
+    static readonly type = '[Account] NewAction2';
+  }
+  export class Newaction1 {
+    static readonly type = '[Account] Newaction1';
+  }
 }

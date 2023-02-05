@@ -2,7 +2,7 @@ export type {{>modelName}} = {
     id: string
 }
 
-export type {{>stateModelName}} = {map: Record<string, {{>modelName}}>};
+export type {{>stateModelName}} = {map: {{>nameRecordType}} };
 
 export const defaults: {{>stateModelName}} = {
     map: {},

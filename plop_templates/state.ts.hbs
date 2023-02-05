@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {State, Action, StateContext} from '@ngxs/store';
-import { {{> actionName }} } from '../action/{{>actionsFileName}}';
+import { {{> actionNameSpace }} } from '../action/{{>actionsFileName}}';
 import { {{>stateModelName}}, defaults} from '../models/{{>modelFileName}}';
 
 @State<{{>stateModelName}}>({
@@ -9,10 +9,10 @@ import { {{>stateModelName}}, defaults} from '../models/{{>modelFileName}}';
 })
 @Injectable({providedIn: 'root'})
 export class {{>stateName}} {
-  @Action({{>actionName}}.AddOrUpdate)
+  @Action({{>actionNameSpace}}.AddOrUpdate)
   add(
       {getState, patchState}: StateContext<{{>stateModelName}}>,
-      {payload}: {{>actionName}}.AddOrUpdate
+      {payload}: {{>actionNameSpace}}.AddOrUpdate
     ) {
       const state = getState();
       patchState({
@@ -20,15 +20,15 @@ export class {{>stateName}} {
       });
     }
 
-  @Action({{>actionName}}.Clear)
+  @Action({{>actionNameSpace}}.Clear)
   clear({setState}: StateContext<{{>stateModelName}}>) {
     setState({...defaults});
   }
 
- @Action({{>actionName}}.RemoveByIds)
+ @Action({{>actionNameSpace}}.RemoveByIds)
   removeByIds(
     {getState, setState}: StateContext<{{>stateModelName}}>,
-    {payload}: {{>actionName}}.RemoveByIds
+    {payload}: {{>actionNameSpace}}.RemoveByIds
   ) {
     const state = getState();
     payload.forEach(id => {

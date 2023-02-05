@@ -1,0 +1,17 @@
+import {Selector} from '@ngxs/store';
+import { {{>modelName}}, {{>stateModelName}} } from '../models/{{>modelFileName}}';
+import { {{>stateName}} } from '../state/{{>stateFileName}}';
+
+export class {{>selectorName}} {
+  @Selector([{{>stateName}}])
+  static {{>getMap}}(state: {{>stateModelName}}): {{>nameRecordType}} {
+    return state.map;
+  }
+
+  @Selector([{{>selectorName}}.{{>getMap}}])
+  static {{>getById}}(
+    map: {{>nameRecordType}}
+  ): (id: string) => {{>modelName}} | null {
+    return id => map[id] ?? null;
+  }
+}

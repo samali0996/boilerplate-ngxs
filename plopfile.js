@@ -1,16 +1,28 @@
+'use strict';
+exports.__esModule = true;
 
 module.exports = function (plop) {
+  var PLOP_APPEND_PATTERN = '/* PLOP APPEND MARKER. DO NOT DELETE! */';
+
   plop.setPartial('stateModelName', '{{pascalCase name}}StateModel');
-  plop.setPartial('modelName', '{{pascalCase name}}Model')
-  plop.setPartial('actionName', '{{pascalCase name}}')
-  plop.setPartial('stateName', '{{pascalCase name}}State')
-  plop.setPartial('actionsFileName', '{{kebabCase name}}.action')
-  plop.setPartial('modelFileName', '{{kebabCase name}}.model')
-  plop.setPartial('stateFileName', '{{kebabCase name}}.state')
+  plop.setPartial('modelName', '{{pascalCase name}}Model');
+  plop.setPartial('actionNameSpace', '{{pascalCase name}}');
+  plop.setPartial('stateName', '{{pascalCase name}}State');
+  plop.setPartial('selectorName', '{{pascalCase name}}Selector');
+  plop.setPartial('newActionName', '{{pascalCase newAction}}');
 
+  plop.setPartial('actionsFileName', '{{kebabCase name}}.action');
+  plop.setPartial('modelFileName', '{{kebabCase name}}.model');
+  plop.setPartial('stateFileName', '{{kebabCase name}}.state');
+  plop.setPartial('selectorFileName', '{{kebabCase name}}.selector');
 
-  plop.setGenerator('ngxsMapModel', {
-    description: 'NGXS Map State Model',
+  plop.setPartial('getMap', 'get{{pascalCase  name}}Map');
+  plop.setPartial('getById', 'get{{pascalCase name}}ById');
+  plop.setPartial('nameRecordType', 'Record<string, {{>modelName}}>');
+  plop.setPartial('plopAppendPattern', PLOP_APPEND_PATTERN);
+
+  plop.setGenerator('ngxs Map Model', {
+    description: 'Generate a new Ngxs Model file using Map pattern',
     prompts: [
       {
         type: 'input',
@@ -26,8 +38,8 @@ module.exports = function (plop) {
       },
     ],
   });
-  plop.setGenerator('ngxsMapAction', {
-    description: 'Ngxs Map Action',
+  plop.setGenerator('ngxs Map Action', {
+    description: 'Generate a new Ngxs Action file using Map pattern',
     prompts: [
       {
         type: 'input',
@@ -42,9 +54,32 @@ module.exports = function (plop) {
         templateFile: 'plop_templates/action.ts.hbs',
       },
     ],
-  })
-  plop.setGenerator('ngxsMapState', {
-    description: 'Ngxs Map State',
+  });
+  plop.setGenerator('ngxs Add Action', {
+    description: 'Append a new Ngxs Action to an existing Action namespace',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Namespace: ',
+      },
+      {
+        type: 'input',
+        name: 'newAction',
+        message: 'Action Name: ',
+      },
+    ],
+    actions: [
+      {
+        type: 'append',
+        pattern: PLOP_APPEND_PATTERN,
+        path: 'src/app/{{ kebabCase name}}/action/{{>actionsFileName}}.ts',
+        templateFile: 'plop_templates/append-action.ts.hbs',
+      },
+    ],
+  });
+  plop.setGenerator('ngxs Map State', {
+    description: 'Generate a new Ngxs State file using Map pattern',
     prompts: [
       {
         type: 'input',
@@ -59,5 +94,22 @@ module.exports = function (plop) {
         templateFile: 'plop_templates/state.ts.hbs',
       },
     ],
-  })
+  });
+  plop.setGenerator('ngxs Map Selector', {
+    description: '',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Name: ',
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: 'src/app/{{ kebabCase name}}/selector/{{>selectorFileName}}.ts',
+        templateFile: 'plop_templates/selector.ts.hbs',
+      },
+    ],
+  });
 };

@@ -1,16 +1,19 @@
 import { {{>modelName}} } from '../models/{{>modelFileName}}'
 
-export namespace {{>actionName}} {
+export namespace {{>actionNameSpace}} {
     export class AddOrUpdate {
-        static readonly type = '[{{>actionName}}] AddOrUpdate';
+        static readonly type = '[{{>actionNameSpace}}] AddOrUpdate';
         constructor(public payload: {{>modelName}}) {}
     }
     export class Clear {
-    static readonly type = '[{{>actionName}}] Clear';
+    static readonly type = '[{{>actionNameSpace}}] Clear';
   }
 
   export class RemoveByIds {
-    static readonly type = '[{{>actionName}}] RemoveByIds';
+    static readonly type = '[{{>actionNameSpace}}] RemoveByIds';
     constructor(public payload: string[]) {}
   }
+
+  {{> plopAppendPattern }}
+
 }
