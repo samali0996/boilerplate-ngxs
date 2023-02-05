@@ -1,0 +1,9 @@
+import {Injectable} from '@angular/core';
+import {State, Action, StateContext} from '@ngxs/store';
+import {{{pascalCase name}}} from '../actions/{{kebabCase name}}.actions';
+import { {{pascalCase name}}StateModel, defaults} from '../models/{{kebabCase name}}.model';
+
+@State<{{pascalCase name}}StateModel>({
+  name: '{{kebabCase name}}',
+  defaults,
+})

@@ -1,7 +1,7 @@
 
 module.exports = function (plop) {
 
-  plop.setGenerator('ngxsMapStateModel', {
+  plop.setGenerator('ngxsMapModel', {
     description: 'NGXS Map State Model',
     prompts: [
       {
@@ -18,7 +18,7 @@ module.exports = function (plop) {
       },
     ],
   });
-  plop.setGenerator('ngxsMapStateAction', {
+  plop.setGenerator('ngxsMapAction', {
     description: 'Ngxs Map Action',
     prompts: [
       {
