@@ -1,0 +1,16 @@
+import { {{capatalizeFirstLetter name}}Model } from '../models/{{lowerCase name}}.model'
+
+export namespace {{capatalizeFirstLetter name}} {
+    export class AddOrUpdate {
+        static readonly type = '[{{capatalizeFirstLetter name}}] AddOrUpdate';
+        constructor(public payload: {{capatalizeFirstLetter name}}Model) {}
+    }
+    export class Clear {
+    static readonly type = '[{{capatalizeFirstLetter name}}] Clear';
+  }
+
+  export class RemoveByIds {
+    static readonly type = '[{{capatalizeFirstLetter name}}] RemoveById';
+    constructor(public payload: string[]) {}
+  }
+}
