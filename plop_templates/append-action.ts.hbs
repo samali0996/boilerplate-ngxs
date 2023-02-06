@@ -1,3 +1,5 @@
-export class {{ pascalCase newAction}} {
-    static readonly type = '[{{> actionNameSpace}}] {{pascalCase newAction}}';
+    export class {{ pascalCase newAction}} {
+        static readonly type = '[{{> actionNameSpace}}] {{pascalCase newAction}}';
+        {{actionConstructor payloadType}}
+    }
 }

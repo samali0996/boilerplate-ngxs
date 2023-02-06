@@ -2,8 +2,6 @@
 exports.__esModule = true;
 
 module.exports = function (plop) {
-  var PLOP_APPEND_PATTERN = '/* PLOP APPEND MARKER. DO NOT DELETE! */';
-
   plop.setPartial('stateModelName', '{{pascalCase name}}StateModel');
   plop.setPartial('modelName', '{{pascalCase name}}Model');
   plop.setPartial('actionNameSpace', '{{pascalCase name}}');
@@ -19,7 +17,11 @@ module.exports = function (plop) {
   plop.setPartial('getMap', 'get{{pascalCase  name}}Map');
   plop.setPartial('getById', 'get{{pascalCase name}}ById');
   plop.setPartial('nameRecordType', 'Record<string, {{>modelName}}>');
-  plop.setPartial('plopAppendPattern', PLOP_APPEND_PATTERN);
+
+  plop.setHelper('actionConstructor', payloadType => {
+    if (payloadType === null || payloadType === '') return '';
+    return `constructor(public payload: ${payloadType}) {}`;
+  });
 
   plop.setGenerator('ngxs Map Model', {
     description: 'Generate a new Ngxs Model file using Map pattern',
@@ -68,11 +70,21 @@ module.exports = function (plop) {
         name: 'newAction',
         message: 'Action Name: ',
       },
+      {
+        type: 'input',
+        name: 'payloadType',
+        message: 'Enter payload type (empty if no payload): ',
+      },
     ],
     actions: [
       {
+        type: 'modify',
+        path: 'src/app/{{ kebabCase name}}/action/{{>actionsFileName}}.ts',
+        pattern: /}\s*$/,
+        template: '',
+      },
+      {
         type: 'append',
-        pattern: PLOP_APPEND_PATTERN,
         path: 'src/app/{{ kebabCase name}}/action/{{>actionsFileName}}.ts',
         templateFile: 'plop_templates/append-action.ts.hbs',
       },

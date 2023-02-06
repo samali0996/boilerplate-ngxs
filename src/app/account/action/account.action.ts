@@ -14,11 +14,24 @@ export namespace Account {
     constructor(public payload: string[]) {}
   }
 
-  /* PLOP APPEND MARKER. DO NOT DELETE! */
-  export class NewAction2 {
-    static readonly type = '[Account] NewAction2';
+  export class MyNewAction {
+    static readonly type = '[Account] MyNewAction';
   }
-  export class Newaction1 {
-    static readonly type = '[Account] Newaction1';
+
+  export class NewAction {
+    static readonly type = '[Account] NewAction';
+  }
+
+  export class HelloThere {
+    static readonly type = '[Account] HelloThere';
+  }
+
+  export class Actionnn {
+    static readonly type = '[Account] Actionnn';
+  }
+
+  export class NewestAction {
+    static readonly type = '[Account] NewestAction';
+    constructor(public payload: string[]) {}
   }
 }
