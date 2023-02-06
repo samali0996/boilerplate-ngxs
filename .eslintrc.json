@@ -5,6 +5,16 @@
   ],
   "overrides": [
     {
+      "env": {"node": true,"es6": true},
+      "parserOptions": {
+        "sourceType": "module"
+      },
+      "files":[
+        "*.js"
+      ],
+      "extends":["eslint:recommended"]
+    },
+    {
       "files": [
         "*.ts"
       ],
