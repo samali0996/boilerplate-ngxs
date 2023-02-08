@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {RouterModule} from '@angular/router';
 import {NgxsModule} from '@ngxs/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import {NgxsModule} from '@ngxs/store';
       disabled: environment.production,
     }),
     RouterModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
