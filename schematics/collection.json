@@ -5,6 +5,11 @@
       "description": "A blank schematic.",
       "factory": "./my-first-schematic/src/index#myFirstSchematic",
       "schema": "./my-first-schematic/src/schema.json"
+    },
+    "map-state-schematic": {
+      "description": "Creates an Ngxs state that follows a map pattern",
+      "factory": "./map-state-schematic/src/index#mapStateSchematic",
+      "schema": "./map-state-schematic/src/schema.json"
     }
   }
 }

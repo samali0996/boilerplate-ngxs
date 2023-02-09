@@ -15,7 +15,8 @@
     "plop": "plop",
     "schematics:build": "tsc -p schematics/tsconfig.json",
     "schematics:test": "npm run schematics:build && npx jasmine ./schematics/**/*_spec.js",
-    "schematics:generate:my-first-schematic": "npm run schematics:build && npx schematics ./schematics/collection.json:my-first-schematic --debug=false"
+    "schematics:generate:my-first": "npm run schematics:build && npx schematics ./schematics/collection.json:my-first-schematic --debug=false",
+    "schematics:generate:map-state": "npm run schematics:build && npx schematics ./schematics/collection.json:map-state-schematic --debug=false"
   },
   "husky": {
     "hooks": {
