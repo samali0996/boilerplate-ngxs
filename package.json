@@ -6,14 +6,17 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng-test",
+    "test:no-watch": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:all": "npm run test:no-watch && npm run schematics:test",
     "lint": "ng lint",
     "prepare": "husky install",
     "playground": "angular-playground",
     "plop": "plop",
-    "build:my-first-schematic": "tsc schematics/my-first-schematic/src/index.ts",
-    "generate:my-first-schematic": "npm run build:my-first-schematic && npx schematics ./schematics/collection.json:my-first-schematic --debug=false",
-    "test:my-first:schematic": "tsc -p schematics/tsconfig.json && jasmine ./schematics/my-first-schematic/**/*_spec.js"
+    "schematics:build": "tsc -p schematics/tsconfig.json",
+    "schematics:test": "npm run schematics:build && npx jasmine ./schematics/**/*_spec.js",
+    "schematics:generate:my-first-schematic": "npm run schematics:build && npx schematics ./schematics/collection.json:my-first-schematic --debug=false"
+
   },
   "husky": {
     "hooks": {
