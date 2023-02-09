@@ -7,7 +7,7 @@
 /bazel-out
 
 # Node
-/node_modules
+**/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -42,3 +42,25 @@ testem.log
 Thumbs.db
 
 /logs
+**/dist
+**/build
+
+
+# Outputs
+**/src/**/*.js
+**/src/**/*.js.map
+**/src/**/*.d.ts
+
+# IDEs
+.idea/
+jsconfig.json
+.vscode/
+
+# Misc
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Mac OSX Finder files.
+**/.DS_Store
+.DS_Store

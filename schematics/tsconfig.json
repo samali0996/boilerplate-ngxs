@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["es2021"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+   
+    "skipLibCheck": true,
+   
+    "target": "es2021",
+    "types": ["jasmine", "node"],
+  },
+}

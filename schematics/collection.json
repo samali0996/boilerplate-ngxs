@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "my-first-schematic": {
+      "description": "A blank schematic.",
+      "factory": "./my-first-schematic/src/index#myFirstSchematic",
+      "schema": "./my-first-schematic/src/schema.json"
+    }
+  }
+}

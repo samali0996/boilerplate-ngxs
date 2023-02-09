@@ -10,7 +10,10 @@
     "lint": "ng lint",
     "prepare": "husky install",
     "playground": "angular-playground",
-    "plop": "plop"
+    "plop": "plop",
+    "build:my-first-schematic": "tsc schematics/my-first-schematic/src/index.ts",
+    "generate:my-first-schematic": "npm run build:my-first-schematic && npx schematics ./schematics/collection.json:my-first-schematic --debug=false",
+    "test:my-first:schematic": "tsc -p schematics/tsconfig.json && jasmine ./schematics/my-first-schematic/**/*_spec.js"
   },
   "husky": {
     "hooks": {
