@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng-test",
     "test:no-watch": "ng test --watch=false --browsers=ChromeHeadless",
-    "test:all": "npm run test:no-watch && npm run schematics:test",
+    "test:all": "concurrently -g  -c \"auto\" \"npm run test:no-watch\"  \"npm run schematics:test\"",
     "lint": "ng lint",
     "prepare": "husky install",
     "playground": "angular-playground",
@@ -16,7 +16,6 @@
     "schematics:build": "tsc -p schematics/tsconfig.json",
     "schematics:test": "npm run schematics:build && npx jasmine ./schematics/**/*_spec.js",
     "schematics:generate:my-first-schematic": "npm run schematics:build && npx schematics ./schematics/collection.json:my-first-schematic --debug=false"
-
   },
   "husky": {
     "hooks": {
@@ -58,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "5.48.1",
     "@typescript-eslint/parser": "5.48.1",
     "angular-playground": "^10.1.0",
+    "concurrently": "^7.6.0",
     "cypress": "^12.5.1",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
