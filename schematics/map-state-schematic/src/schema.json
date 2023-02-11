@@ -1,1 +1,30 @@
-{}
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "mapStateSchematic",
+  "title": "Map State Schematic",
+  "description": "Creates an NGXS state following a Map pattern",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "path": {
+      "type": "string",
+      "x-prompt": "path to create the state file",
+      "description": "pathname"
+    },
+    "name": {
+      "type": "string",
+      "description": "New name for the state",
+      "x-prompt": "What do you want to name your Map Ngxs State? (exclude State suffix)"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project name",
+      "x-prompt": "Project Name: "
+    },
+    "type": {
+      "type": "string",
+      "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
+      "default": "State"
+    }
+  }
+}

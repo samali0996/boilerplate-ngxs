@@ -1,5 +1,8 @@
 # MyApp
 
+The purpose of this project is to generate scaffolding for NGXS + Angular project.
+use schematics to streamline actions such as creating states, selectors, models, actions.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## Development server

@@ -12,4 +12,7 @@
     "target": "es2021",
     "types": ["jasmine", "node"],
   },
+  "exclude": [
+    "**/files/*"
+  ]
 }

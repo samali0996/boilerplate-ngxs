@@ -50,6 +50,7 @@ Thumbs.db
 **/src/**/*.js
 **/src/**/*.js.map
 **/src/**/*.d.ts
+schematics/**/*.js
 
 # IDEs
 .idea/
