@@ -18,15 +18,29 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import {workspaces, strings, virtualFs, normalize} from '@angular-devkit/core';
-import {buildDefaultPath, getWorkspace} from '../../utility/workspace';
-import {findModuleFromOptions} from '../../utility/find-module';
-import {parseName} from '../../utility/parse-name';
+import {
+  buildDefaultPath,
+  getWorkspace,
+} from '@schematics/angular/utility/workspace';
+import {
+  findModule,
+  findModuleFromOptions,
+} from '@schematics/angular/utility/find-module';
+import {parseName} from '@schematics/angular/utility/parse-name';
+import {addNgxsStateToNgModule} from '../../utility/add-ngxs-state-to-ng-module';
 
 type MapStateOptions = {
   name: string;
   path: string;
   project: string;
   module: string | undefined;
+  rootModule: string;
+  stateModelName: string;
+  modelName: string;
+  stateName: string;
+  modelFileName: string;
+  actionFileName: string;
+  actionName: string;
 };
 
 export function mapStateSchematic(options: MapStateOptions): Rule {
@@ -50,15 +64,26 @@ export function mapStateSchematic(options: MapStateOptions): Rule {
     const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
     options.path = parsedPath.path;
+    options.rootModule = findModule(tree, options.path);
+
+    options.stateModelName = strings.classify(`${options.name}StateModel`);
+    options.stateName = strings.classify(`${options.name}State`);
+    options.modelFileName = strings.dasherize(`${options.name}.model`);
+    options.modelName = strings.classify(`${options.name}Model`);
+    options.actionFileName = strings.dasherize(`${options.name}.action`);
+    options.actionName = strings.classify(`${options.name}Action`);
 
     const templateSource = apply(url('../files'), [
-      applyTemplates({
+      template({
         ...strings,
         ...options,
       }),
       move(parsedPath.path),
     ]);
 
-    return mergeWith(templateSource);
+    return chain([
+      addNgxsStateToNgModule({modulePath: options.rootModule}),
+      mergeWith(templateSource),
+    ]);
   };
 }

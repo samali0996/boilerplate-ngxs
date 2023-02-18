@@ -6,11 +6,6 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "path": {
-      "type": "string",
-      "x-prompt": "path to create the state file",
-      "description": "pathname"
-    },
     "name": {
       "type": "string",
       "description": "New name for the state",
@@ -20,11 +15,6 @@
       "type": "string",
       "description": "Project name",
       "x-prompt": "Project Name: "
-    },
-    "type": {
-      "type": "string",
-      "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
-      "default": "State"
     }
   }
 }

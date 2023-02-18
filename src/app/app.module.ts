@@ -8,12 +8,13 @@ import {AppComponent} from './app.component';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {RouterModule} from '@angular/router';
 import {NgxsModule} from '@ngxs/store';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HelloState} from './hello/state/hello.state';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([HelloState]),
     BrowserModule,
     AppRoutingModule,
     NgxsLoggerPluginModule.forRoot({
